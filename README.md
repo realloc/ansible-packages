@@ -1,7 +1,7 @@
 realloc.packages
 =========
 
-This role ensures the sate of packages from the list given in variable.
+This role ensures the state of packages from the list given in variable.
 
 I was missing
 [platform_packages](https://supermarket.chef.io/cookbooks/platform_packages)
@@ -29,7 +29,10 @@ Example Playbook
     - role: realloc.packages
     packages:
       - tar
-      - mc
+      - name: vim
+        state: absent
+      - name: emacs
+        state: latest
 ```
 
 License
