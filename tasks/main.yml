@@ -1,2 +1,14 @@
 ---
 # tasks file for realloc.packages
+
+- include: apt.yml
+  when: ansible_pkg_mgr == "apt"
+
+- include: zypper.yml
+  when: ansible_pkg_mgr == "zypper"
+
+- name: packages | Ensure packages state
+  package:
+    name: "{{ item.name | default(item)  }}"
+    state: "{{ item.state | default(\"present\") }}"
+  with_items: packages
