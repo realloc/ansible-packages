@@ -11,4 +11,4 @@
   package:
     name: "{{ item.name | default(item)  }}"
     state: "{{ item.state | default(\"present\") }}"
-  with_items: packages
+  with_items: "{{ packages }}"
